@@ -1,0 +1,52 @@
+<head>
+  <title>Birdnest Drone Monitoring</title>
+</head>
+
+<body>
+<h1>Birdnest Drone Monitoring</h1>
+  <h2>Recent Violations</h2>
+  {{> violations}}
+
+  <h2>Not Very Beautiful Map</h2>
+  <small> Note: Map has been "zoomed" to show potential violators i.e from origin(125,125) to Coordinates(375,375)</small>
+<div style="display: flex;">
+  <svg viewBox="125,125,250,250" width="500" height="500">
+ </svg>
+ <p id="tooltip" z-index="5" fill="green"></p>
+
+</div>
+
+</body>
+<template name="violations">
+  {{#if pilots}}
+
+  <table height="500" >
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Distance</th>
+        <th>Last Observation</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each pilot in pilots}}
+      <tr>
+        <td>{{name pilot.firstName pilot.lastName}}</td>
+        <td>{{pilot.email}}</td>
+        <td>{{pilot.phoneNumber}}</td>
+        <td>{{dist pilot.distance}}</td>
+        <td>{{pilot.drone.NDZtimestamp}}</td>
+
+
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  {{else}}
+  <p>No pilots found.</p>
+{{/if}}
+ 
+</template>
