@@ -1,14 +1,7 @@
-console.log(`Greetings from ${module.id}!`);
 import { Pilots } from '../both/collection';
 import d3 from 'd3'
 
-p = Pilots
-
-
-
 import './main.html'
-// Import the fetch package
-//import fetch from 'node-fetch';
 
 
 Template.violations.helpers({
@@ -19,7 +12,8 @@ Template.violations.helpers({
         return distance.toPrecision(4)
     },
     pilots(){
-         return Pilots.find({},{sort:{'drone.NDZtimestamp':-1}}).fetch()
+         return Pilots.find({ 'drone.NDZtimestamp' : {
+          $gt: new Date(new Date().getTime() - 1000 * 60 * 10)}},{sort:{'drone.NDZtimestamp':-1},reactive:true}).fetch()
     }
 })
 
