@@ -4,8 +4,7 @@ import { Pilots } from '../both/collection';
 Meteor.startup(() => {
   // code to run on server at startup
 
-
-  Pilots.createIndex({'drone.NDZtimestamp':1},{expireAfterSeconds:600000})
+  Pilots.rawCollection().createIndex({'drone.NDZtimestamp':1},{expireAfterSeconds:600000})
 
  // Pilots.remove({})
   setInterval(Meteor.bindEnvironment(updatePilots),2000)

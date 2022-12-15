@@ -17,13 +17,18 @@ Template.violations.helpers({
     }
 })
 
-
-
 Template.violations.onRendered(()=>{
 
     Tracker.autorun(()=>{
 
-        var data = [{x: 250, y: 250, firstName:"Bird",lastName: "Nest", drone: {serialNumber:"N/A"}},...Pilots.find().fetch()].map((el,ind)=>{
+        var data = [
+          {x: 250, 
+          y: 250,
+          firstName:"Bird",
+          lastName: "Nest", 
+          drone: {serialNumber:"N/A"}},
+          ...Pilots.find({ 'drone.NDZtimestamp' : {
+          $gt: new Date(new Date().getTime() - 1000 * 60 * 10)}}).fetch()].map((el,ind)=>{
             return {
                 x:el.drone.positionX/1000,
                 y:el.drone.positionY/1000,
