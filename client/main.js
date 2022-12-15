@@ -17,8 +17,6 @@ Template.violations.helpers({
     }
 })
 
-
-
 Template.violations.onRendered(()=>{
 
     Tracker.autorun(()=>{
