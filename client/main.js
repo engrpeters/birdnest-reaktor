@@ -57,10 +57,8 @@ Template.violations.onRendered(()=>{
 
           circles.on("mouseover", function(ev,d) {
             d3.select(this).style("fill", "red");
-            document.getElementById("tooltip").innerHTML = "Pilot: " + d.firstName + "" + d.lastName + "<br>" + "Drone: " + d.drone.serialNumber;
-            document.getElementById("tooltip").setAttribute('x',d.x + 25)  
-            document.getElementById("tooltip").setAttribute('y',d.y)  
-       
+            document.getElementById("tooltip").innerHTML = "Pilot: " + d.firstName + " " + d.lastName + "<br>" + "Drone: " + d.drone.serialNumber;
+        
         });
 
 
