@@ -13,7 +13,7 @@ Template.violations.helpers({
     },
     pilots(){
          return Pilots.find({ 'drone.NDZtimestamp' : {
-          $gt: new Date(new Date().getTime() - 1000 * 60 * 10)}},{sort:{'drone.NDZtimestamp':-1},reactive:true}).fetch()
+          $gt: new Date(new Date().getTime() - 1000 * 60 * 10)}},{limit:25,sort:{'drone.NDZtimestamp':-1}}).fetch()
     }
 })
 
@@ -57,7 +57,7 @@ Template.violations.onRendered(()=>{
 
           circles.on("mouseover", function(ev,d) {
             d3.select(this).style("fill", "red");
-            document.getElementById("tooltip").innerHTML = "Pilot: " + d.firstName + " " + d.lastName + "<br>" + "Drone: " + d.drone.serialNumber;
+            document.getElementById("tooltip").innerHTML = "Pilot: " + d.firstName + " " + d.lastName + "<br>" + "Drone: " + d.drone.serialNumber + "<br> Location (x,y): "+ d.x.toFixed(2) + ", " + d.y.toFixed(2) ;
         
         });
 

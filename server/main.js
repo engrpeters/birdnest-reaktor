@@ -7,7 +7,7 @@ Meteor.startup(() => {
   Pilots.rawCollection().createIndex({'drone.NDZtimestamp':1},{expireAfterSeconds:600000})
 
  // Pilots.remove({})
-  setInterval(Meteor.bindEnvironment(updatePilots),2000)
+  Meteor.setInterval(updatePilots,5000)
 
 });
 
@@ -90,7 +90,6 @@ function updatePilots() {
             const pilot = JSON.parse(result.content);
 
             pilot.drone = d
-console.log(pilot)
             // Update the pilot information with the distance from the nest
             pilot.distance = distance({x:d.positionX,y:d.positionY}, nestCoor);
 

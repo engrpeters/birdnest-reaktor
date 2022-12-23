@@ -7,14 +7,7 @@
   <h2>Recent Violations</h2>
   {{> violations}}
 
-  <h2>Not Very Beautiful Map</h2>
-  <small> Note: Map has been "zoomed" to show potential violators i.e from origin(125,125) to Coordinates(375,375)</small>
-<div style="display: flex;">
-  <svg viewBox="125,125,250,250" width="500" height="500">
- </svg>
- <p id="tooltip" z-index="5" fill="green"></p>
 
-</div>
 
 </body>
 <template name="violations">
@@ -45,8 +38,18 @@
     </tbody>
   </table>
 
+  <h2>A Not Very Beautiful Map</h2>
+  <small> Note: Map has been "zoomed in" to show potential violators i.e from origin(125,125) to Coordinates(375,375)</small>
+<div style="display: flex;">
+  <svg viewBox="125,125,250,250" width="500" height="500">
+ </svg>
+ <p id="tooltip" z-index="5" fill="green"></p>
+
+</div>
+
   {{else}}
-  <p>No pilots found.</p>
+
+  {{> spinner}}
 {{/if}}
  
 </template>

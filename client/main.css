@@ -61,8 +61,8 @@ tr:nth-child(odd):hover td {
 
 #tooltip{
   position: relative;
-  background-color: rgba(0,0,0,.5);
-  height: 40px;
+  background-color: rgba(0,0,0,.3);
+  height: min-content;
   top: 200px;
   padding: 5px;
 
